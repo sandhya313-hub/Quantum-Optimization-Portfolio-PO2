@@ -1,0 +1,57 @@
+{
+  "name": "Processor B",
+  "qubit_count": 9,
+  "coupling_edges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      8,
+      0
+    ]
+  ],
+  "source": "Processor_AB_Benchmark_Configuration_FINAL.pdf",
+  "noise_model": null,
+  "notes": "Topology only. Noise parameters are not supplied here. Confirm whether edge direction is significant in the official configuration."
+}

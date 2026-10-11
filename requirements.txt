@@ -1,0 +1,8 @@
+# Initial scaffold only; validate in a clean Colab runtime and then pin exact tested versions.
+qiskit
+qiskit-aer
+numpy
+scipy
+pandas
+matplotlib
+pytest
