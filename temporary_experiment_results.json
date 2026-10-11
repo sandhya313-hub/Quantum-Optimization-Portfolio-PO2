@@ -1,0 +1,42 @@
+{
+  "experiment_type": "temporary_matrix_test",
+  "risk_matrix": "SIGMA_TEST (not official)",
+  "qaoa": {
+    "p": 1,
+    "best_gamma": 1.1753022772507937,
+    "best_beta": 0.7887492867081691,
+    "optimizer_success": false,
+    "expected_qubo_cost": 1.7014347063758097,
+    "optimal_portfolio_probability": 0.29231294762166915,
+    "constraint_satisfaction_probability": 0.6368263318262894
+  },
+  "classical": {
+    "best_feasible_objective": 7.42,
+    "best_feasible_assets": [
+      0,
+      2
+    ]
+  },
+  "processor_A": {
+    "depth": 91,
+    "physical_cx_count": 21,
+    "logical_cx_count": 12,
+    "additional_cx_gates": 9,
+    "cx_count_increase_percent": 75.0,
+    "explicit_swap_count": 0
+  },
+  "processor_B": {
+    "depth": 85,
+    "physical_cx_count": 24,
+    "logical_cx_count": 12,
+    "additional_cx_gates": 12,
+    "cx_count_increase_percent": 100.0,
+    "explicit_swap_count": 0
+  },
+  "limitations": [
+    "Official risk matrix not yet supplied",
+    "No hardware noise model used",
+    "Routing overhead not yet isolated",
+    "COBYLA did not report convergence"
+  ]
+}
