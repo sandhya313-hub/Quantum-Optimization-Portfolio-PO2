@@ -1,8 +1,6 @@
-# Initial scaffold only; validate in a clean Colab runtime and then pin exact tested versions.
-qiskit
-qiskit-aer
-numpy
+numpy==2.1.3
 scipy
 pandas
+qiskit==2.5.2
+qiskit-aer==0.17.2
 matplotlib
-pytest
