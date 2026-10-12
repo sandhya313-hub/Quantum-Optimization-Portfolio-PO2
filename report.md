@@ -239,4 +239,23 @@ For the custom risk matrix, the classical reference selects assets 0 and 2 with 
 
 The topology comparison shows that Processor B produced a shallower transpiled circuit, while Processor A used fewer CX gates under the tested settings. Further routing-stage validation and reproducibility checks are required before making stronger conclusions.
 
-**All numerical results in this report are preliminary custom-matrix experimental results. They must not be presented as results from the official common-matrix benchmark.**
+**All numerical results in this report are preliminary custom-matrix experimental results. They must not be presented as results from the official common-matrix benchmark.**                                                                                                                                     ## 10. Routing-Stage Analysis
+
+The routing stage was inspected separately using Qiskit's preset pass manager at optimization level 0, with the same coupling maps, target basis gates, and transpiler seed used in the processor benchmark.
+
+| Routing metric | Processor A | Processor B |
+|---|---:|---:|
+| CX gates before routing | 12 | 12 |
+| CX gates after routing | 12 | 12 |
+| SWAP instructions after routing | 3 | 4 |
+| Routing-stage depth | 29 | 25 |
+| Estimated additional CX gates from SWAP decomposition | 9 | 12 |
+| Final transpiled CX gates | 21 | 24 |
+
+Each SWAP can be decomposed into three CX gates. Based on the observed routing-stage SWAP counts, the corresponding decomposition adds an estimated nine CX gates for Processor A and twelve for Processor B. These estimates match the differences between the 12-CX logical circuit and the final transpiled circuits in the current experiment.
+
+Processor A required three routing-stage SWAP instructions, while Processor B required four. Processor B nevertheless had a lower measured routing-stage depth (25 versus 29) and a lower final circuit depth (85 versus 91).
+
+These results illustrate why the routing-stage output and final transpiled output should both be recorded: SWAP instructions can be decomposed into the target gate basis, so the final circuit may report zero explicit SWAP instructions even when the routing stage inserted them.
+
+The measurements are specific to the tested logical circuit and transpiler configuration. They do not imply that either processor is universally superior.
