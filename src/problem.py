@@ -1,5 +1,5 @@
 
-"""Problem definition and validation for Qiskit Fall Fest PS-O2."""
+"""Problem definition and QUBO construction for Qiskit Fall Fest PS-O2."""
 
 from dataclasses import dataclass
 import numpy as np
@@ -27,7 +27,7 @@ QAOA_P = 1
 
 
 def validate_risk_matrix(sigma):
-    """Validate a finite, symmetric 4x4 covariance matrix."""
+    """Validate a finite, symmetric 4x4 risk matrix."""
     if sigma is None:
         raise ValueError("A risk matrix must be provided.")
 
@@ -57,8 +57,8 @@ class PortfolioProblem:
     matrix_source: str = "notebook_benchmark"
 
     def __post_init__(self):
-        self.returns = np.asarray(self.returns, dtype=float)
-        self.sigma = validate_risk_matrix(self.sigma)
+        self.returns = np.asarray(self.returns, dtype=float).copy()
+        self.sigma = validate_risk_matrix(self.sigma).copy()
 
         if self.returns.shape != (NUM_ASSETS,):
             raise ValueError("Returns must contain exactly four values.")
@@ -66,11 +66,14 @@ class PortfolioProblem:
         if not np.all(np.isfinite(self.returns)):
             raise ValueError("Returns must contain finite values.")
 
-        if self.risk_aversion < 0:
-            raise ValueError("Risk aversion must be non-negative.")
+        if not np.isfinite(self.risk_aversion) or self.risk_aversion < 0:
+            raise ValueError("Risk aversion must be finite and non-negative.")
 
-        if self.budget_penalty < 0:
-            raise ValueError("Budget penalty must be non-negative.")
+        if not np.isfinite(self.budget_penalty) or self.budget_penalty < 0:
+            raise ValueError("Budget penalty must be finite and non-negative.")
+
+        if not isinstance(self.target_assets, (int, np.integer)):
+            raise ValueError("Target assets must be an integer.")
 
         if not 0 <= self.target_assets <= NUM_ASSETS:
             raise ValueError("Target assets must be between 0 and 4.")
@@ -79,8 +82,8 @@ class PortfolioProblem:
 def load_problem():
     """Load the current notebook benchmark configuration."""
     return PortfolioProblem(
-        returns=RETURNS.copy(),
-        sigma=SIGMA.copy(),
+        returns=RETURNS,
+        sigma=SIGMA,
     )
 
 
@@ -89,13 +92,13 @@ def portfolio_objective(
     problem=None,
     include_budget_penalty=True,
 ):
-    """Evaluate the portfolio objective.
+    """Evaluate the maximization objective used in the notebook.
 
-    Returns:
-        r.T @ x - risk_aversion * (x.T @ Sigma @ x)
+    f(x) = returns.T @ x
+           - risk_aversion * (x.T @ Sigma @ x)
+           - budget_penalty * (sum(x) - target_assets)**2
 
-    If include_budget_penalty is True, subtract:
-        budget_penalty * (sum(x) - target_assets)**2
+    Returns the maximization score. The QUBO energy is its negative.
     """
     if problem is None:
         problem = load_problem()
@@ -121,3 +124,54 @@ def portfolio_objective(
         ) ** 2
 
     return float(value)
+
+
+def qubo_coefficients(problem=None):
+    """Return Q and the constant offset for minimizing -portfolio_objective.
+
+    Uses the convention:
+        energy(x) = x.T @ Q @ x + offset
+
+    Q is returned as an upper-triangular matrix so that its off-diagonal
+    coefficients can be used directly in a standard QUBO expression.
+    """
+    if problem is None:
+        problem = load_problem()
+
+    q = (
+        problem.risk_aversion * problem.sigma
+        - np.diag(problem.returns)
+    )
+
+    # Convert the squared budget penalty into a quadratic polynomial.
+    penalty = problem.budget_penalty
+    k = problem.target_assets
+
+    q += penalty * (np.ones((NUM_ASSETS, NUM_ASSETS)) - np.eye(NUM_ASSETS))
+    q += np.diag(penalty * (1 - 2 * k) * np.ones(NUM_ASSETS))
+
+    offset = penalty * (k ** 2)
+
+    # Keep diagonal terms unchanged and combine symmetric off-diagonal terms.
+    q_upper = np.triu(q + np.triu(q, 1).T)
+
+    return q_upper, float(offset)
+
+
+def qubo_energy(x, problem=None):
+    """Evaluate the QUBO minimization energy."""
+    if problem is None:
+        problem = load_problem()
+
+    x = np.asarray(x)
+
+    if x.shape != (NUM_ASSETS,):
+        raise ValueError("Portfolio must contain exactly four values.")
+
+    if not np.all(np.isin(x, [0, 1])):
+        raise ValueError("Portfolio values must be binary (0 or 1).")
+
+    x = x.astype(float)
+    q, offset = qubo_coefficients(problem)
+
+    return float(x @ q @ x + offset)
