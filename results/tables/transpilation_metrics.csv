@@ -1,0 +1,4 @@
+Processor,Physical qubits in circuit,Depth,Reference CX,Transpiled CX,Additional CX vs reference,Explicit SWAP instructions after basis translation,SWAP-equivalent estimate (additional CX / 3),RZ,SX,X
+Unconstrained reference,4,25,,12,,0,,30,12,0
+Processor A,5,46,12.0,18,6.0,0,2.0,30,12,0
+Processor B,9,37,12.0,15,3.0,0,1.0,30,12,0
