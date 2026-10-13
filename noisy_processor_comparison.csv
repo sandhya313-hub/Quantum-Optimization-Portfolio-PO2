@@ -1,3 +1,0 @@
-Processor,Shots,Optimal portfolio hits,Optimal portfolio hit rate,Feasible samples,Feasible-output rate,Infeasible-output rate,Empirical mean objective,Best sampled feasible bits,Best sampled feasible objective
-Processor A,4096,471,0.114990234375,2833,0.691650390625,0.308349609375,6.974013671875,"[0, 1, 0, 1]",-0.5700000000000001
-Processor B,4096,486,0.11865234375,2861,0.698486328125,0.301513671875,6.82245849609375,"[0, 1, 0, 1]",-0.5700000000000001
