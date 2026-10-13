@@ -2,12 +2,13 @@
 """Problem definition and QUBO construction for Qiskit Fall Fest PS-O2."""
 
 from dataclasses import dataclass
+
 import numpy as np
 
 
 NUM_ASSETS = 4
 
-# Inputs used in the current notebook benchmark.
+# Inputs matching main.ipynb.
 RETURNS = np.array([0.12, 0.18, 0.10, 0.22], dtype=float)
 
 SIGMA = np.array(
@@ -27,10 +28,7 @@ QAOA_P = 1
 
 
 def validate_risk_matrix(sigma):
-    """Validate a finite, symmetric 4x4 risk matrix."""
-    if sigma is None:
-        raise ValueError("A risk matrix must be provided.")
-
+    """Validate the covariance matrix."""
     sigma = np.asarray(sigma, dtype=float)
 
     if sigma.shape != (NUM_ASSETS, NUM_ASSETS):
@@ -47,7 +45,7 @@ def validate_risk_matrix(sigma):
 
 @dataclass
 class PortfolioProblem:
-    """Configuration for the four-asset portfolio optimization problem."""
+    """Configuration for the four-asset portfolio problem."""
 
     returns: np.ndarray
     sigma: np.ndarray
@@ -80,7 +78,7 @@ class PortfolioProblem:
 
 
 def load_problem():
-    """Load the current notebook benchmark configuration."""
+    """Load the same inputs and parameters used in main.ipynb."""
     return PortfolioProblem(
         returns=RETURNS,
         sigma=SIGMA,
@@ -92,13 +90,12 @@ def portfolio_objective(
     problem=None,
     include_budget_penalty=True,
 ):
-    """Evaluate the maximization objective used in the notebook.
+    """
+    Evaluate the notebook's minimization objective:
 
-    f(x) = returns.T @ x
-           - risk_aversion * (x.T @ Sigma @ x)
-           - budget_penalty * (sum(x) - target_assets)**2
-
-    Returns the maximization score. The QUBO energy is its negative.
+    E(x) = x.T @ Sigma @ x
+           - q * (returns.T @ x)
+           + penalty * (sum(x) - target_assets)**2
     """
     if problem is None:
         problem = load_problem()
@@ -114,52 +111,54 @@ def portfolio_objective(
     x = x.astype(float)
 
     value = (
-        problem.returns @ x
-        - problem.risk_aversion * (x @ problem.sigma @ x)
+        x @ problem.sigma @ x
+        - problem.risk_aversion * (problem.returns @ x)
     )
 
     if include_budget_penalty:
-        value -= problem.budget_penalty * (
-            int(x.sum()) - problem.target_assets
+        value += problem.budget_penalty * (
+            x.sum() - problem.target_assets
         ) ** 2
 
     return float(value)
 
 
 def qubo_coefficients(problem=None):
-    """Return Q and the constant offset for minimizing -portfolio_objective.
+    """
+    Return the upper-triangular QUBO matrix and constant offset.
 
-    Uses the convention:
-        energy(x) = x.T @ Q @ x + offset
+    Convention:
+        E(x) = offset
+             + sum_i Q[i, i] * x[i]
+             + sum_(i < j) Q[i, j] * x[i] * x[j]
 
-    Q is returned as an upper-triangular matrix so that its off-diagonal
-    coefficients can be used directly in a standard QUBO expression.
+    The coefficients match the objective in main.ipynb.
     """
     if problem is None:
         problem = load_problem()
 
-    q = (
-        problem.risk_aversion * problem.sigma
-        - np.diag(problem.returns)
-    )
+    q = np.zeros((NUM_ASSETS, NUM_ASSETS), dtype=float)
 
-    # Convert the squared budget penalty into a quadratic polynomial.
     penalty = problem.budget_penalty
     k = problem.target_assets
 
-    q += penalty * (np.ones((NUM_ASSETS, NUM_ASSETS)) - np.eye(NUM_ASSETS))
-    q += np.diag(penalty * (1 - 2 * k) * np.ones(NUM_ASSETS))
+    for i in range(NUM_ASSETS):
+        q[i, i] = (
+            problem.sigma[i, i]
+            - problem.risk_aversion * problem.returns[i]
+            + penalty * (1 - 2 * k)
+        )
 
-    offset = penalty * (k ** 2)
+        for j in range(i + 1, NUM_ASSETS):
+            q[i, j] = 2 * problem.sigma[i, j] + 2 * penalty
 
-    # Keep diagonal terms unchanged and combine symmetric off-diagonal terms.
-    q_upper = np.triu(q + np.triu(q, 1).T)
+    offset = penalty * k**2
 
-    return q_upper, float(offset)
+    return q, float(offset)
 
 
 def qubo_energy(x, problem=None):
-    """Evaluate the QUBO minimization energy."""
+    """Evaluate the QUBO energy using the notebook's convention."""
     if problem is None:
         problem = load_problem()
 
@@ -174,4 +173,4 @@ def qubo_energy(x, problem=None):
     x = x.astype(float)
     q, offset = qubo_coefficients(problem)
 
-    return float(x @ q @ x + offset)
+    return float(offset + x @ q @ x)
