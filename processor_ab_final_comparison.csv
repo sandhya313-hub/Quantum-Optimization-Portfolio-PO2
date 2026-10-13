@@ -1,3 +1,0 @@
-Processor,Physical qubits in circuit,Depth,Reference CX,Transpiled CX,Additional CX vs reference,Explicit SWAP instructions after basis translation,SWAP-equivalent estimate (additional CX / 3),RZ,SX,X,Shots,Optimal portfolio hits,Optimal portfolio hit rate,Feasible samples,Feasible-output rate,Infeasible-output rate,Empirical mean objective,Best sampled feasible bits,Best sampled feasible objective
-Processor A,5,46,12.0,18,6.0,0,2.0,30,12,0,4096,471,0.114990234375,2833,0.691650390625,0.308349609375,6.974013671875,"[0, 1, 0, 1]",-0.5700000000000001
-Processor B,9,37,12.0,15,3.0,0,1.0,30,12,0,4096,486,0.11865234375,2861,0.698486328125,0.301513671875,6.82245849609375,"[0, 1, 0, 1]",-0.5700000000000001
