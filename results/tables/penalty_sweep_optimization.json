@@ -1,0 +1,320 @@
+[
+  {
+    "lambda": 0,
+    "best_initialization": {
+      "seed": 2,
+      "gamma": 0.7889904399141647,
+      "beta": 2.664347157978168,
+      "expected_cost": -4.512461754866384,
+      "optimizer_success": true,
+      "iterations": 37
+    },
+    "all_initializations": [
+      {
+        "seed": 0,
+        "gamma": 3.0223294815206807,
+        "beta": 0.7989408300276241,
+        "expected_cost": -3.748354461208006,
+        "optimizer_success": true,
+        "iterations": 64
+      },
+      {
+        "seed": 1,
+        "gamma": 0.7889151806066821,
+        "beta": 2.6643600005476413,
+        "expected_cost": -4.512461751980446,
+        "optimizer_success": true,
+        "iterations": 47
+      },
+      {
+        "seed": 2,
+        "gamma": 0.7889904399141647,
+        "beta": 2.664347157978168,
+        "expected_cost": -4.512461754866384,
+        "optimizer_success": true,
+        "iterations": 37
+      },
+      {
+        "seed": 3,
+        "gamma": 0.7889159787716674,
+        "beta": 2.664364419441259,
+        "expected_cost": -4.512461752277464,
+        "optimizer_success": true,
+        "iterations": 42
+      },
+      {
+        "seed": 4,
+        "gamma": 3.141592653589793,
+        "beta": 2.422146853853326,
+        "expected_cost": -3.208044830119456,
+        "optimizer_success": true,
+        "iterations": 26
+      }
+    ]
+  },
+  {
+    "lambda": 0.5,
+    "best_initialization": {
+      "seed": 1,
+      "gamma": 3.141592653589793,
+      "beta": 2.3350282596972916,
+      "expected_cost": -3.308301288490762,
+      "optimizer_success": true,
+      "iterations": 37
+    },
+    "all_initializations": [
+      {
+        "seed": 0,
+        "gamma": 3.141592653589793,
+        "beta": 2.3350145876221053,
+        "expected_cost": -3.308301286896677,
+        "optimizer_success": true,
+        "iterations": 33
+      },
+      {
+        "seed": 1,
+        "gamma": 3.141592653589793,
+        "beta": 2.3350282596972916,
+        "expected_cost": -3.308301288490762,
+        "optimizer_success": true,
+        "iterations": 37
+      },
+      {
+        "seed": 2,
+        "gamma": 1.48327814622316,
+        "beta": 1.7505443751487684,
+        "expected_cost": -2.7589129315287666,
+        "optimizer_success": true,
+        "iterations": 46
+      },
+      {
+        "seed": 3,
+        "gamma": 0.41476237490199097,
+        "beta": 1.3365536996743022,
+        "expected_cost": -3.0444085667423213,
+        "optimizer_success": true,
+        "iterations": 49
+      },
+      {
+        "seed": 4,
+        "gamma": 3.141592653589793,
+        "beta": 2.3349710857216603,
+        "expected_cost": -3.3083012764116306,
+        "optimizer_success": true,
+        "iterations": 32
+      }
+    ]
+  },
+  {
+    "lambda": 1,
+    "best_initialization": {
+      "seed": 4,
+      "gamma": 3.060850860807039,
+      "beta": 2.420546263747303,
+      "expected_cost": -3.1324469873723952,
+      "optimizer_success": true,
+      "iterations": 35
+    },
+    "all_initializations": [
+      {
+        "seed": 0,
+        "gamma": 1.9327384968509653,
+        "beta": 0.4325501094881138,
+        "expected_cost": -2.868149629731935,
+        "optimizer_success": true,
+        "iterations": 42
+      },
+      {
+        "seed": 1,
+        "gamma": 1.6327703301207848,
+        "beta": 3.141592653589793,
+        "expected_cost": -2.187499999999999,
+        "optimizer_success": true,
+        "iterations": 14
+      },
+      {
+        "seed": 2,
+        "gamma": 2.251890409894521,
+        "beta": 2.025970661817211,
+        "expected_cost": -2.9377134170319326,
+        "optimizer_success": true,
+        "iterations": 44
+      },
+      {
+        "seed": 3,
+        "gamma": 0.309938842801581,
+        "beta": 1.3091758681668906,
+        "expected_cost": -2.9626841363325114,
+        "optimizer_success": true,
+        "iterations": 47
+      },
+      {
+        "seed": 4,
+        "gamma": 3.060850860807039,
+        "beta": 2.420546263747303,
+        "expected_cost": -3.1324469873723952,
+        "optimizer_success": true,
+        "iterations": 35
+      }
+    ]
+  },
+  {
+    "lambda": 2,
+    "best_initialization": {
+      "seed": 0,
+      "gamma": 3.1082787836693377,
+      "beta": 0.6998649087588728,
+      "expected_cost": -2.5087421212794667,
+      "optimizer_success": true,
+      "iterations": 31
+    },
+    "all_initializations": [
+      {
+        "seed": 0,
+        "gamma": 3.1082787836693377,
+        "beta": 0.6998649087588728,
+        "expected_cost": -2.5087421212794667,
+        "optimizer_success": true,
+        "iterations": 31
+      },
+      {
+        "seed": 1,
+        "gamma": 1.728265970207603,
+        "beta": 2.7052003920172263,
+        "expected_cost": -2.226768413901684,
+        "optimizer_success": true,
+        "iterations": 52
+      },
+      {
+        "seed": 2,
+        "gamma": 1.4010773425274918,
+        "beta": 1.755342542166133,
+        "expected_cost": -1.398815522469565,
+        "optimizer_success": true,
+        "iterations": 39
+      },
+      {
+        "seed": 3,
+        "gamma": 0.9883765952275653,
+        "beta": 1.3074943074211645,
+        "expected_cost": -1.805349847170429,
+        "optimizer_success": true,
+        "iterations": 48
+      },
+      {
+        "seed": 4,
+        "gamma": 3.141592653589793,
+        "beta": 2.2431097949037877,
+        "expected_cost": -1.960274763768227,
+        "optimizer_success": true,
+        "iterations": 35
+      }
+    ]
+  },
+  {
+    "lambda": 5,
+    "best_initialization": {
+      "seed": 3,
+      "gamma": 0.08982464971852375,
+      "beta": 1.2898049989938931,
+      "expected_cost": -1.9129379623527936,
+      "optimizer_success": true,
+      "iterations": 35
+    },
+    "all_initializations": [
+      {
+        "seed": 0,
+        "gamma": 2.5177089633421605,
+        "beta": 0.47061132237753317,
+        "expected_cost": -0.6839262670103144,
+        "optimizer_success": true,
+        "iterations": 58
+      },
+      {
+        "seed": 1,
+        "gamma": 1.9072983676447595,
+        "beta": 2.6538034998088382,
+        "expected_cost": -1.3735493973237158,
+        "optimizer_success": true,
+        "iterations": 48
+      },
+      {
+        "seed": 2,
+        "gamma": 1.9031658366069775,
+        "beta": 1.08068836861917,
+        "expected_cost": -1.2858571160193502,
+        "optimizer_success": true,
+        "iterations": 90
+      },
+      {
+        "seed": 3,
+        "gamma": 0.08982464971852375,
+        "beta": 1.2898049989938931,
+        "expected_cost": -1.9129379623527936,
+        "optimizer_success": true,
+        "iterations": 35
+      },
+      {
+        "seed": 4,
+        "gamma": 2.8759442809850517,
+        "beta": 2.1365531024895734,
+        "expected_cost": -0.27466050598895103,
+        "optimizer_success": true,
+        "iterations": 98
+      }
+    ]
+  },
+  {
+    "lambda": 10,
+    "best_initialization": {
+      "seed": 3,
+      "gamma": 0.2519874515590818,
+      "beta": 1.2935812822760417,
+      "expected_cost": 0.005331164736489535,
+      "optimizer_success": false,
+      "iterations": 100
+    },
+    "all_initializations": [
+      {
+        "seed": 0,
+        "gamma": 2.0211853166747455,
+        "beta": 0.7704710796109618,
+        "expected_cost": 2.761086369589653,
+        "optimizer_success": false,
+        "iterations": 100
+      },
+      {
+        "seed": 1,
+        "gamma": 1.5987862008698916,
+        "beta": 2.742155850321604,
+        "expected_cost": 2.5123228470330092,
+        "optimizer_success": false,
+        "iterations": 100
+      },
+      {
+        "seed": 2,
+        "gamma": 0.8392161910813685,
+        "beta": 1.3229836882662183,
+        "expected_cost": 3.492814593651054,
+        "optimizer_success": true,
+        "iterations": 42
+      },
+      {
+        "seed": 3,
+        "gamma": 0.2519874515590818,
+        "beta": 1.2935812822760417,
+        "expected_cost": 0.005331164736489535,
+        "optimizer_success": false,
+        "iterations": 100
+      },
+      {
+        "seed": 4,
+        "gamma": 2.7046478571478123,
+        "beta": 2.057410061728811,
+        "expected_cost": 2.7789274801965167,
+        "optimizer_success": true,
+        "iterations": 66
+      }
+    ]
+  }
+]

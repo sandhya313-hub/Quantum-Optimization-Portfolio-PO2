@@ -1,0 +1,183 @@
+{
+  "problem": "PS-O2",
+  "optimizer": "COBYLA",
+  "max_iterations": 100,
+  "cost_evaluation": "exact ideal statevector",
+  "lambda": 2.0,
+  "initialization_results": [
+    {
+      "seed": 0,
+      "initial_gamma": 2.0010741575072397,
+      "initial_beta": 0.8475599579967072,
+      "gamma": 3.1082787836693377,
+      "beta": 0.6998649087588728,
+      "expected_cost": -2.5087421212794667,
+      "optimizer_success": true,
+      "iterations": 31
+    },
+    {
+      "seed": 1,
+      "initial_gamma": 1.6079350561067187,
+      "initial_beta": 2.985969765881358,
+      "gamma": 1.728265970207603,
+      "beta": 2.7052003920172263,
+      "expected_cost": -2.226768413901684,
+      "optimizer_success": true,
+      "iterations": 52
+    },
+    {
+      "seed": 2,
+      "initial_gamma": 0.8218787590475991,
+      "initial_beta": 0.9377375833114271,
+      "gamma": 1.4010773425274918,
+      "beta": 1.755342542166133,
+      "expected_cost": -1.398815522469565,
+      "optimizer_success": true,
+      "iterations": 39
+    },
+    {
+      "seed": 3,
+      "initial_gamma": 0.2690747942844946,
+      "initial_beta": 0.7439621478151841,
+      "gamma": 0.9883765952275653,
+      "beta": 1.3074943074211645,
+      "expected_cost": -1.805349847170429,
+      "optimizer_success": true,
+      "iterations": 48
+    },
+    {
+      "seed": 4,
+      "initial_gamma": 2.9626981331891504,
+      "initial_beta": 1.6063828834996454,
+      "gamma": 3.141592653589793,
+      "beta": 2.2431097949037877,
+      "expected_cost": -1.960274763768227,
+      "optimizer_success": true,
+      "iterations": 35
+    }
+  ],
+  "best_initialization": {
+    "seed": 0,
+    "initial_gamma": 2.0010741575072397,
+    "initial_beta": 0.8475599579967072,
+    "gamma": 3.1082787836693377,
+    "beta": 0.6998649087588728,
+    "expected_cost": -2.5087421212794667,
+    "optimizer_success": true,
+    "iterations": 31
+  },
+  "classical_optimum": {
+    "assets": [
+      0,
+      1
+    ],
+    "x": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "return": 8.0,
+    "risk": 6.5,
+    "score": 4.75,
+    "cost": -4.75
+  },
+  "classical_feasible_portfolios": [
+    {
+      "assets": [
+        0,
+        1
+      ],
+      "x": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "return": 8.0,
+      "risk": 6.5,
+      "score": 4.75,
+      "cost": -4.75
+    },
+    {
+      "assets": [
+        1,
+        2
+      ],
+      "x": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "return": 7.0,
+      "risk": 6.0,
+      "score": 4.0,
+      "cost": -4.0
+    },
+    {
+      "assets": [
+        0,
+        3
+      ],
+      "x": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "return": 7.0,
+      "risk": 6.0,
+      "score": 4.0,
+      "cost": -4.0
+    },
+    {
+      "assets": [
+        1,
+        3
+      ],
+      "x": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "return": 5.0,
+      "risk": 3.0,
+      "score": 3.5,
+      "cost": -3.5
+    },
+    {
+      "assets": [
+        2,
+        3
+      ],
+      "x": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "return": 6.0,
+      "risk": 5.5,
+      "score": 3.25,
+      "cost": -3.25
+    },
+    {
+      "assets": [
+        0,
+        2
+      ],
+      "x": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "return": 9.0,
+      "risk": 13.5,
+      "score": 2.25,
+      "cost": -2.25
+    }
+  ]
+}
