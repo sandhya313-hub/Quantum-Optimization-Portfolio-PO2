@@ -7,7 +7,7 @@ from qff_phase2 import (PROCESSOR_A, PROCESSOR_B, load_processor, validate_proce
                         counts_to_x, SHOTS)
 
 # 1) Your Processor D (copy processor_D_template.json -> processors/processor_D.json and edit)
-D = load_processor("processor_D_template.json")
+D = load_processor("processors/processor_D_template.json")
 print("Processor D rule check:", validate_processor_d(D, required_qubits=6) or "OK")
 
 # 2) Objective 1 - Bell state on an adjacent physical pair of D, ideal and noisy
