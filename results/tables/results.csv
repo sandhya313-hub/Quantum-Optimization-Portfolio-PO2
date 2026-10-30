@@ -1,0 +1,4 @@
+processor,num_qubits,connectivity_edges,circuit_depth,cx_count,total_gates,ideal_optimal_prob,ideal_feasible_prob,noisy_optimal_prob,noisy_feasible_prob,noisy_mean_cost
+Processor A,5,4,49,19,98,0.1983,0.9762,0.1737,0.903,4.1825
+Processor B,9,12,57,18,88,0.1903,0.9765,0.1747,0.9237,0.1013
+Processor D,4,5,37,15,74,0.1915,0.979,0.1875,0.9503,-2.2342

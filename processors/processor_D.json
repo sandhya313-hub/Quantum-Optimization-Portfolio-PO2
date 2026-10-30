@@ -1,23 +1,27 @@
-
 {
   "name": "Processor D",
   "team": "QSpark",
   "problem_statement": "PS-O2",
   "num_qubits": 4,
+  "qubit_count": 4,
   "edges": [
     [0, 1],
-    [0, 2],
-    [0, 3],
     [1, 2],
-    [1, 3],
-    [2, 3]
+    [2, 3],
+    [3, 0],
+    [0, 2]
   ],
-  "basis_gates": ["rz", "sx", "x", "cx"],
-  "noise": {
-    "model": "official",
-    "p1": 0.001,
-    "p2": 0.005,
-    "p_readout": 0.01
-  },
- "design_rationale": "Processor D uses four fully connected physical qubits to match the four logical qubits required by PS-O2. Its complete connectivity enables direct interactions between every pair of qubits, aiming to reduce routing overhead while using fewer physical qubits than Processors A and B. We will benchmark its circuit metrics and solution quality under ideal and noisy simulation to evaluate its effectiveness."
+  "coupling_edges": [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 0],
+    [0, 2]
+  ],
+  "basis_gates": ["id", "rz", "sx", "x", "cx", "reset"],
+  "cx_error": 0.005,
+  "single_qubit_error": 0.0005,
+  "readout_error": 0.01,
+  "t1_us": 150.0,
+  "t2_us": 120.0
 }

@@ -1,0 +1,25 @@
+{
+  "name": "Processor A",
+  "team": "QSpark",
+  "problem_statement": "PS-O2",
+  "num_qubits": 5,
+  "qubit_count": 5,
+  "edges": [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 4]
+  ],
+  "coupling_edges": [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 4]
+  ],
+  "basis_gates": ["id", "rz", "sx", "x", "cx", "reset"],
+  "cx_error": 0.01,
+  "single_qubit_error": 0.001,
+  "readout_error": 0.02,
+  "t1_us": 100.0,
+  "t2_us": 80.0
+}
